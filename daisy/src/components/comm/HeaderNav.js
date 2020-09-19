@@ -42,7 +42,7 @@ class HeaderNav extends Component {
         }
         else{
             // var w=window.open('about:blank')
-            w.location.href="#/searchResult/type=comp?"+String(value)
+            w.location.href="#/searchResult/type=comp/"+String(value)
         }
     }
     
