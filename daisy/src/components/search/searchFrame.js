@@ -36,7 +36,14 @@ export default class SearchFrame extends Component {
     searchJump(value){
         console.log(1)
         console.log(this.state.kw)
+<<<<<<< HEAD
         window.location.hash=`#/searchResult/type=${this.state.type}/${this.state.kw}`
+=======
+        //console.log(value)
+        //var w=window.open('about:blank')
+        window.location.hash=`#/searchResult/type=${this.state.type}/${this.state.kw}`
+        //console.log(this.state.type)
+>>>>>>> 85c32c05a24e7dbcfbe281f12f569edff95b01d4
     }
 
     orderChange(e){
