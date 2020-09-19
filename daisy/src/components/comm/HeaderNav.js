@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 // import ReactDOM from 'react-dom'
 import 'antd/dist/antd.css'
 import { Layout, Menu, Input, Space,Divider, Button} from 'antd'
-import { LayoutOutlined,CommentOutlined, HomeOutlined, UserOutlined, RadarChartOutlined,LogoutOutlined, LoginOutlined,SearchOutlined} from '@ant-design/icons'
+import { LayoutOutlined,CommentOutlined, HomeOutlined, UserOutlined, RadarChartOutlined,LogoutOutlined, SearchOutlined,LoginOutlined} from '@ant-design/icons'
 import logo from './logo-re.png'
 import { isLogined,clearToken } from '../../utils/auth';
 import LogoutHeaderNav from './LogoutHeaderNav';
-import {Link} from 'react-router-dom'
+import '../../style/comm/HeaderNav.css'
 
 const { SubMenu } = Menu;
 const { Search } = Input;
@@ -42,13 +42,13 @@ class HeaderNav extends Component {
     //     }
     //     else{
     //         // var w=window.open('about:blank')
-    //         w.location.href="#/searchResult/type=comp/"+String(value)
+    //         w.location.href="#/searchResult/type=comp?"+String(value)
     //     }
     // }
     
     render() {
         this.state.islog=isLogined()
-        // console.log(islog)
+        console.log(JSON.parse(localStorage.getItem('userData'))?null:JSON.parse(localStorage.getItem('userData')).account)
         return (
             this.state.islog?
             <div >
@@ -68,36 +68,36 @@ class HeaderNav extends Component {
                                 {this.state.isLogin ? 'OFF':'IN' }
                             </Button>
                         </div> */}
-                        <div style={{position:'relative',width:'100%',left:'50%'}}>
+                        <div style={{position:'relative',width:'100%',}}>
                             <Menu 
-                            // onClick={this.handleClick} 
-                            // selectedKeys={[current]}
+                            id='headerNav'
+                            style={{position:'relative',width:'100%',left:'15%'}}
                              mode="horizontal" 
                             >
-                                <Menu.Item key="home" icon={<HomeOutlined />} 
-                                style={{left:'50px'}}
+                                <Menu.Item key="home" icon={<HomeOutlined />}
+                                style={{margin:'0 50px'}}
                                 >
                                     <a href="#/home" target="_blank" rel="noopener noreferrer">
                                         首页
                                     </a>
                                 </Menu.Item>
                                 <Menu.Item key="compPage" icon={<RadarChartOutlined />}
-                                style={{left:'50px'}}
+                                style={{margin:'0 50px'}}
                                 >
                                     <a href="#/allCompPage" target="_blank" rel="noopener noreferrer">
                                         比赛
                                     </a>
                                 </Menu.Item>
                                 <Menu.Item key="community" icon={<LayoutOutlined />}
-                                style={{left:'50px'}}
+                                style={{margin:'0 50px'}}
                                 >
                                     <a href="#/community" target="_blank" rel="noopener noreferrer">
                                         社区
                                     </a>
                                 </Menu.Item>
 
-                                <Menu.Item key="searchMenu" icon={<SearchOutlined />}
-                                style={{left:'50px'}}
+                                <Menu.Item  key="searchMenu" icon={<SearchOutlined />}
+                                style={{margin:'0 50px'}}
                                 >
                                     <a href="#/search" target="_blank" rel="noopener noreferrer">
                                         搜索
@@ -108,15 +108,15 @@ class HeaderNav extends Component {
                                     onSearch={value => this.searchJump(value)}
                                     style={{ width: 400 }}
                                 /> */}
-                                </Menu.Item>              
+                                </Menu.Item>  
                                 
                                 <SubMenu icon={<UserOutlined />} 
-                                style={{left:'50px'}}
+                                style={{margin:'0 50px'}}
                                 key='personalMenu'
                                 title={"我的"}>
                                     
                                     <Menu.Item key="userHome">
-                                        <a href={"#/personal/account="+(JSON.parse(localStorage.getItem('userData'))?JSON.parse(localStorage.getItem('userData')).account:null)} target="_blank">
+                                        <a href={"#/personal/account="+(JSON.parse(localStorage.getItem('userData'))?JSON.parse(localStorage.getItem('userData')).account:null)} target="_blank" rel="noopener noreferrer">
                                             个人主页
                                         </a>
                                     </Menu.Item>
@@ -136,9 +136,8 @@ class HeaderNav extends Component {
                                         </a>
                                     </Menu.Item>
                                 </SubMenu>
-
                                 <SubMenu icon={<CommentOutlined />} 
-                                style={{left:'50px'}}
+                                style={{margin:'0 50px'}}
                                 key='messageMenu'
                                 // style={{ visibility: this.state.isVisibility,}}
                                 title={"消息"}>
@@ -157,11 +156,6 @@ class HeaderNav extends Component {
                                             回复我的
                                         </a></Menu.Item>
 
-                                    <Menu.Item key="letterNotice">
-                                        <a href="#/message/letter" target="_blank" rel="noopener noreferrer">
-                                            私信
-                                        </a></Menu.Item>
-
                                     <Menu.Item key="teamNotice">
                                         <a href="#/message/team" target="_blank" rel="noopener noreferrer">
                                             队伍消息
@@ -172,9 +166,10 @@ class HeaderNav extends Component {
                                             组队申请
                                         </a>
                                     </Menu.Item>
-                                </SubMenu>
+                                </SubMenu>            
+                                
                                 <Menu.Item key="signOut" icon={<LogoutOutlined />}
-                                style={{left:'50px'}}
+                                style={{left:'100px',float:'right'}}
                                 onClick={this.logoutClick}
                                 >
                                         登出
