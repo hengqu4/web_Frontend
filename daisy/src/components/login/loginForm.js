@@ -19,8 +19,8 @@ const NormalLoginForm = () => {
       console.log(response)
       setToken(response.data.jwt, values.username)
       console.log('close window')
-      window.close()
       window.alert("登陆成功")
+      window.location.href='#/home'
     })
   };
 

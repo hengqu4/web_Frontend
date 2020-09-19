@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import { Layout } from 'antd';
 import { Input } from 'antd';
-/*
-import SearchContent from "../../components/search/searchContent"
-import SearchContentComm from "../../components/search/searchContentComm"
-import SearchContentComp from "../../components/search/searchContentComp"
-import SearchContentUsr from "../../components/search/searchContentUsr"
-*/
 import { Menu } from 'antd';
 import { Route, Link } from 'react-router-dom';
 import { searchRoutes } from '../../routes/index'
@@ -18,9 +12,7 @@ export default class SearchAssort extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        //kw: this.props.match.params.kw,
         kw: window.location.hash.slice(25),
-        //type: this.props.match.params.type
         type: this.props.type
       }
       console.log(this.state.kw)

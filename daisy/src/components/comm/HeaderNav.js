@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import ReactDOM from 'react-dom'
 import 'antd/dist/antd.css'
 import { Layout, Menu, Input, Space,Divider, Button} from 'antd'
-import { LayoutOutlined,CommentOutlined, HomeOutlined, UserOutlined, RadarChartOutlined,LogoutOutlined, LoginOutlined} from '@ant-design/icons'
+import { LayoutOutlined,CommentOutlined, HomeOutlined, UserOutlined, RadarChartOutlined,LogoutOutlined, LoginOutlined,SearchOutlined} from '@ant-design/icons'
 import logo from './logo-re.png'
 import { isLogined,clearToken } from '../../utils/auth';
 import LogoutHeaderNav from './LogoutHeaderNav';
@@ -32,19 +32,19 @@ class HeaderNav extends Component {
             })
         })
     }
-    searchJump(value){
-        console.log(value)
-        console.log(value.length)
-        var w=window.open('about:blank')
-        if(value.length === 0){
-            // window.open="#/search"
-            w.location.href="#/search"
-        }
-        else{
-            // var w=window.open('about:blank')
-            w.location.href="#/searchResult/type=comp/"+String(value)
-        }
-    }
+    // searchJump(value){
+    //     console.log(value)
+    //     console.log(value.length)
+    //     var w=window.open('about:blank')
+    //     if(value.length === 0){
+    //         // window.open="#/search"
+    //         w.location.href="#/search"
+    //     }
+    //     else{
+    //         // var w=window.open('about:blank')
+    //         w.location.href="#/searchResult/type=comp/"+String(value)
+    //     }
+    // }
     
     render() {
         this.state.islog=isLogined()
@@ -68,39 +68,50 @@ class HeaderNav extends Component {
                                 {this.state.isLogin ? 'OFF':'IN' }
                             </Button>
                         </div> */}
-                        <div style={{position:'relative',width:'100%',left:'20%'}}>
+                        <div style={{position:'relative',width:'100%',left:'50%'}}>
                             <Menu 
-                            // style={{width:'100%'}}
                             // onClick={this.handleClick} 
                             // selectedKeys={[current]}
                              mode="horizontal" 
                             >
-                                <Menu.Item key="home" icon={<HomeOutlined />}>
+                                <Menu.Item key="home" icon={<HomeOutlined />} 
+                                style={{left:'50px'}}
+                                >
                                     <a href="#/home" target="_blank" rel="noopener noreferrer">
                                         首页
                                     </a>
                                 </Menu.Item>
-                                <Menu.Item key="compPage" icon={<RadarChartOutlined />}>
+                                <Menu.Item key="compPage" icon={<RadarChartOutlined />}
+                                style={{left:'50px'}}
+                                >
                                     <a href="#/allCompPage" target="_blank" rel="noopener noreferrer">
                                         比赛
                                     </a>
                                 </Menu.Item>
-                                <Menu.Item key="community" icon={<LayoutOutlined />}>
+                                <Menu.Item key="community" icon={<LayoutOutlined />}
+                                style={{left:'50px'}}
+                                >
                                     <a href="#/community" target="_blank" rel="noopener noreferrer">
                                         社区
                                     </a>
                                 </Menu.Item>
 
-                                <Menu.Item>
-                                <Search 
+                                <Menu.Item key="searchMenu" icon={<SearchOutlined />}
+                                style={{left:'50px'}}
+                                >
+                                    <a href="#/search" target="_blank" rel="noopener noreferrer">
+                                        搜索
+                                    </a>
+                                {/* <Search 
                                     placeholder="请输入想要搜索的内容"
                                     // onChange={this.inputChange.bind(this)}
                                     onSearch={value => this.searchJump(value)}
                                     style={{ width: 400 }}
-                                />
+                                /> */}
                                 </Menu.Item>              
                                 
                                 <SubMenu icon={<UserOutlined />} 
+                                style={{left:'50px'}}
                                 key='personalMenu'
                                 title={"我的"}>
                                     
@@ -127,6 +138,7 @@ class HeaderNav extends Component {
                                 </SubMenu>
 
                                 <SubMenu icon={<CommentOutlined />} 
+                                style={{left:'50px'}}
                                 key='messageMenu'
                                 // style={{ visibility: this.state.isVisibility,}}
                                 title={"消息"}>
@@ -162,6 +174,7 @@ class HeaderNav extends Component {
                                     </Menu.Item>
                                 </SubMenu>
                                 <Menu.Item key="signOut" icon={<LogoutOutlined />}
+                                style={{left:'50px'}}
                                 onClick={this.logoutClick}
                                 >
                                         登出

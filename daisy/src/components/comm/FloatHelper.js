@@ -27,9 +27,13 @@ const styleBackTop = {
 
 const content=(
     <div>
-       <a>客服</a>
+       <a >
+           客服
+        </a>
        <br/><br/>
-       <a>帮助中心</a>
+       <a >
+           帮助中心
+        </a>
     </div> 
     );
 
@@ -58,10 +62,9 @@ export default class FloatHelper extends Component {
                     </BackTop>
                 </div>
                 
-                <div 
+                {/* <div 
                 style={{position:'fixed',float:'right',right:'70px',bottom:'120px'}}
                 >
-                {/* <Affix offsetBottom={120}> */}
                     <Popover
                         content={content}
                         placement="rightTop"
@@ -75,8 +78,7 @@ export default class FloatHelper extends Component {
                             Helper
                         </Button>
                     </Popover>
-                {/* </Affix> */}
-                </div>
+                </div> */}
             </div>
          );
     }

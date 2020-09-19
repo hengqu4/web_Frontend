@@ -21,11 +21,6 @@ export default class HotSearch extends Component {
     var url=CONSTURL.local+CONSTURL.getHotSearch
     Axios.get(url).then((res)=>{
         var result=res.data
-        /*
-        for(var i=0;i<result.length;i++){
-        result[i].Time=this.deleteLetter(result[i].Time)
-        }
-        */
         this.setState({data:result})
         //  console.log(this.state.data)
     })
@@ -36,7 +31,6 @@ export default class HotSearch extends Component {
         let objArr=this.state.data
 
         return (
-
             <div>
                 <Layout className="hotSearchBox" style={{ width: '86%', margin: '5% 7%', padding: '0 20px' }}>
                     <Content style={{ padding: '0 5px' }}>
@@ -58,7 +52,6 @@ export default class HotSearch extends Component {
                     </Content>
                 </Layout>              
             </div>
-
         )
     }
 }

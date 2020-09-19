@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import HeaderNav from '../../components/comm/HeaderNav'
 import {Layout,Menu} from 'antd'
 import {MailOutlined} from '@ant-design/icons'
-import {Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { messageRoutes } from '../../routes/index'
 
 const { Header, Content, Sider } = Layout;

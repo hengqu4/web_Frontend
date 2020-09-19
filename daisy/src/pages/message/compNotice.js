@@ -32,17 +32,22 @@ export default class CompNotice extends Component {
   
   componentDidMount(){
     if(isLogined()){
-      var tempAccount = JSON.parse(localStorage.userData).account;
-      this.state.account = tempAccount;
-      var url=CONSTURL.local+CONSTURL.getCompNotice+this.state.account
-      Axios.get(url).then((res)=>{
-        var result=res.data
-        this.setState({data:result})
-        //console.log(this.state.data)
-        //console.log(res)
-      })
-    }
-  }
+     var tempAccount = JSON.parse(localStorage.userData).account;
+     this.state.account = tempAccount;
+     var token = JSON.parse(localStorage.getItem('token')).token;
+     //var tempAccount = JSON.parse(localStorage.userData).account;
+     //this.state.account = tempAccount;
+     Axios
+       .get('/Notification/' + this.state.account,  {
+       headers: { "Authorization": 'Bearer ' + token },
+     })
+     .then((res) => {
+       console.log(res)
+       var result=res.data
+       this.setState({data:result})
+     })
+   }
+ }
 
   render() {
         //初始化render数组状态

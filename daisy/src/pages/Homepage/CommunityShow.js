@@ -86,9 +86,9 @@ class CommunityShow extends Component {
         }
     }
 
-    onSwitch() {
-
-    }
+    // switchComm(){
+    //     this.componentDidMount()
+    // }
 
     componentDidMount(){
         const _this=this;    //先存一下this，以防使用箭头函数this会指向我们不希望它所指向的对象。
@@ -128,9 +128,9 @@ class CommunityShow extends Component {
                                     </Button>
                                 </Col>
                                 <Col span={2} offset={16}>
-                                    <Button type="primary" style={{float:'right',top:'15px'}}
+                                    {/* <Button type="primary" style={{float:'right',top:'15px'}}
                                     // onClick={this.onSwitch.bind(this)}
-                                    >换一换</Button>
+                                    >换一换</Button> */}
                                 </Col>
                                 <Col span={2} offset={2}>
                                     <Button type="primary" style={{float:'right',top:'15px'}}>

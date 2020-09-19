@@ -4,23 +4,6 @@ import {isLogined} from "../../utils/auth"
 import CONSTURL from '../../components/community/config';
 import Axios from 'axios';
 
-/*
-const data = [
-    {
-      title: 'Ant Design Title 1',
-    },
-    {
-      title: 'Ant Design Title 2',
-    },
-    {
-      title: 'Ant Design Title 3',
-    },
-    {
-      title: 'Ant Design Title 4',
-    },
-  ];
-*/
-
 export default class Reply extends Component {
   constructor(props) {
     super(props);
@@ -34,15 +17,19 @@ export default class Reply extends Component {
     if(isLogined()){
       var tempAccount = JSON.parse(localStorage.userData).account;
       this.state.account = tempAccount;
-      var url=CONSTURL.local+CONSTURL.getReply+this.state.account
-      Axios.get(url).then((res)=>{
+      var token = JSON.parse(localStorage.getItem('token')).token;
+      Axios
+        .get('/User/Reply/' + this.state.account,  {
+        headers: { "Authorization": 'Bearer ' + token },
+      })
+      .then((res) => {
+        console.log(res)
         var result=res.data
         this.setState({data:result})
-        //console.log(this.state.data)
-        //console.log(res)
       })
     }
   }
+
 
   render() {
         //初始化render数组状态

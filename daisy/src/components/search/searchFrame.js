@@ -13,7 +13,6 @@ function handleChange(value) {
 export default class SearchFrame extends Component {
 
     constructor(props) {
-        
         super(props)
         this.state = {
           kw: this.props.kw,
@@ -37,15 +36,10 @@ export default class SearchFrame extends Component {
     searchJump(value){
         console.log(1)
         console.log(this.state.kw)
-        //console.log(value)
-        //var w=window.open('about:blank')
         window.location.hash=`#/searchResult/type=${this.state.type}/${this.state.kw}`
-        //console.log(this.state.type)
     }
 
     orderChange(e){
-        //console.log(e)
-        //console.log('radio checked', e.target.value);
         if(e=="比赛"){
             this.setState({
             type: "comp"
@@ -65,12 +59,14 @@ export default class SearchFrame extends Component {
     }
 
     render() {
-        // var searchWord=this.props.history.location.search
-        // console.log(searchWord)
-
         return (
             <div style={{ marginLeft: '22%' }}>
-                <Select defaultValue="比赛" initialValues="比赛" style={{ width: '80px' }} onChange={this.orderChange.bind(this)}>
+                <Select 
+                    defaultValue="比赛" 
+                    initialValues="比赛" 
+                    style={{ width: '80px' }} 
+                    onChange={this.orderChange.bind(this)}
+                >
                 <Option value="比赛">比赛</Option>
                 <Option value="社区">社区</Option>
                 <Option value="用户">用户</Option>

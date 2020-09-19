@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card,Avatar,List } from 'antd'
 import {isLogined} from "../../utils/auth"
-import CONSTURL from '../../components/community/config';
+//import CONSTURL from '../../components/community/config';
 import Axios from 'axios';
 
 /*
@@ -32,10 +32,15 @@ export default class SystemNotice extends Component {
 
   componentDidMount(){
     if(isLogined()){
+      var token = JSON.parse(localStorage.getItem('token')).token;
       //var tempAccount = JSON.parse(localStorage.userData).account;
       //this.state.account = tempAccount;
-      var url=CONSTURL.local+CONSTURL.getSystemNotice
-      Axios.get(url).then((res)=>{
+
+      Axios
+        .put('/Notice', {
+        headers: { "Authorization": 'Bearer ' + token },
+      })
+        .then((res)=>{
         var result=res.data
         this.setState({data:result})
         //console.log(this.state.data)

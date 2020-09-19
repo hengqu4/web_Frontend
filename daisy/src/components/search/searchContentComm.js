@@ -7,21 +7,6 @@ import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
 import CONSTURL from '../../components/community/config';
 import Axios from 'axios';
 
-/*
-const listData = [];
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    href: 'https://ant.design',
-    title: `ant design part ${i}`,
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    description:
-      'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-    content:
-      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-  });
-}
-*/
-
 const IconText = ({ icon, text }) => (
   <Space>
     {React.createElement(icon)}
@@ -45,11 +30,6 @@ export default class SearchContentComm extends Component {
       var url=CONSTURL.local+CONSTURL.searchComm+this.state.kw+'&OrderBy='+this.state.order
       Axios.get(url).then((res)=>{
         var result=res.data
-        /*
-        for(var i=0;i<result.length;i++){
-          result[i].Time=this.deleteLetter(result[i].Time)
-        }
-        */
         this.setState({data:result})
         console.log(res)
       })
@@ -96,21 +76,12 @@ export default class SearchContentComm extends Component {
                         
             <List
                 itemLayout="vertical"
-                /*
-                split="true"
-                pagination={{
-                onChange: page => {
-                    console.log(page);
-                },
-                pageSize: 3,
-                }}
-                */
                style={{ marginLeft: '20px' }}
                 dataSource={objArr}
 
                 renderItem={item => (
                 <List.Item
-                    key={item.momentId}
+                    key={item.moment.momentId}
                     actions={[
                     <IconText icon={StarOutlined} text={item.starCount} key="list-vertical-star-o" />,
                     <IconText icon={LikeOutlined} text={item.likeCount} key="list-vertical-like-o" />,
@@ -119,15 +90,15 @@ export default class SearchContentComm extends Component {
                 >
                     <List.Item.Meta
                     title={
-                      <a href={'#/Moment/'+item.momentId}>
-                        {item.name}
+                      <a href={'#/Moment/'+item.moment.momentId}>
+                        {item.moment.title}
                       </a>
                     }
                     description={
-                      "发布时间："+item.startTime+"         "+"结束时间："+item.endTime
+                      "发布时间："+item.moment.time
                     }
                     />
-                    {/*item.content*/}
+                    {item.moment.content}
                 </List.Item>
                 )}
             />              

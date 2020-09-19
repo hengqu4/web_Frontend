@@ -4,22 +4,7 @@ import { Form, Radio, Layout } from 'antd';
 import { FireOutlined, LikeOutlined, FieldTimeOutlined, CommentOutlined, BellOutlined } from '@ant-design/icons';
 import CONSTURL from '../../components/community/config';
 import Axios from 'axios';
-/*
-const data = [
-  {
-    title: 'Ant Design Title 1',
-  },
-  {
-    title: 'Ant Design Title 2',
-  },
-  {
-    title: 'Ant Design Title 3',
-  },
-  {
-    title: 'Ant Design Title 4',
-  },
-];
-*/
+
 export default class SearchContentUsr extends Component {
   constructor(props) {
     super(props)
@@ -33,14 +18,9 @@ export default class SearchContentUsr extends Component {
     var url=CONSTURL.local+CONSTURL.searchUser+this.state.kw
     Axios.get(url).then((res)=>{
       var result=res.data
-      /*
-      for(var i=0;i<result.length;i++){
-        result[i].Time=this.deleteLetter(result[i].Time)
-      }
-      */
       this.setState({data:result})
-      console.log(this.state.data)
-      console.log(res)
+      //console.log(this.state.data)
+      //console.log(res)
     })
   }
 
@@ -65,13 +45,13 @@ export default class SearchContentUsr extends Component {
                 <List.Item>
                     <List.Item.Meta
                     avatar={
-                      <a href='#/personal/team'>
+                      <a href={'#/personal/Account='+item.account}>
                         <Avatar src={item.icon}/>
                       </a>
                     }
                     //头像
                     title={
-                      <a href="#/personal/team">
+                      <a href={'#/personal/Account='+item.account}>
                         {item.nickname}
                       </a>
                     }

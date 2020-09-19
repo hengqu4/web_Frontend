@@ -5,23 +5,6 @@ import { FireOutlined, LikeOutlined, FieldTimeOutlined, CommentOutlined, BellOut
 import CONSTURL from '../../components/community/config';
 import Axios from 'axios';
 
-/*
-const data = [
-  {
-    title: 'Ant Design Title 1',
-  },
-  {
-    title: 'Ant Design Title 2',
-  },
-  {
-    title: 'Ant Design Title 3',
-  },
-  {
-    title: 'Ant Design Title 4',
-  },
-];
-*/
-
 export default class SearchContentComp extends Component {
     constructor(props) {
       super(props);
@@ -36,11 +19,6 @@ export default class SearchContentComp extends Component {
       var url=CONSTURL.local+CONSTURL.searchComp+this.state.kw+'&OrderBy='+this.state.order
       Axios.get(url).then((res)=>{
         var result=res.data
-        /*
-        for(var i=0;i<result.length;i++){
-          result[i].Time=this.deleteLetter(result[i].Time)
-        }
-        */
         this.setState({data:result})
         console.log(this.state.data)
         console.log(res)
