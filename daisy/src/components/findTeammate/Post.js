@@ -126,7 +126,7 @@ export default class Post extends Component {
                     ReportUID={this.state.PostId}
                     ReporterUID={userdata.account}
                     Time={moment().format("YYYY-MM-DDTHH:mm:ssC")}
-                    />
+                    />*/
                     ]}      
                 >
                     <div>
