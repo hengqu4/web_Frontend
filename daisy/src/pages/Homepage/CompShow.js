@@ -102,9 +102,9 @@ class CompShow extends Component {
                                     </Button>
                                 </Col>
                                 <Col span={2} offset={18}>
-                                    {/* <Button type="primary" style={{float:'right',top:'15px'}}
+                                    <Button type="primary" style={{float:'right',top:'15px'}}
                                         onClick={this.switchComp}
-                                    >换一换</Button> */}
+                                    >换一换</Button>
                                 </Col>
                                 <Col span={2} offset={0}>
                                     <Button type="primary" style={{float:'right',top:'15px'}}>

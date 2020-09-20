@@ -5,6 +5,8 @@ import Footer from '../components/comm/Footer'
 import HeaderNav from '../components/comm/HeaderNav'
 import FloatHelper from '../components/comm/FloatHelper'
 import TopBar from './Homepage/TopBar'
+import TopBar2 from './Homepage/TopBar2'
+import TopBar3 from './Homepage/TopBar3'
 import CompShow from './Homepage/CompShow'
 
 class Homepage extends Component {

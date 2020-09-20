@@ -8,24 +8,9 @@ import Axios from 'axios';
 import '../../style/homepage.css'
 Axios.defaults.baseURL='/api'
 
-const IconText = ({ icon, text }) => (
-    <Space>
-      {React.createElement(icon)}
-      {text}
-    </Space>
-  );
-
 const { Header, Footer, Sider, Content } = Layout;
- 
-// function limitTxt(txt,count) {
-//     var str = txt;
-//     if(txt.length>count){
-//         str = str.substr(0,count) + '...' ;
-//     }
-//     return str;
-// }
 
-class CommunityShow extends Component {
+class TopBar extends Component {
     constructor(props){
         super(props)
         
@@ -56,10 +41,11 @@ class CommunityShow extends Component {
                 title: '一文看懂前端和后端开发:从入门到放弃',
                 content:'Ant Design, a design language for background applications, is refined by Ant UED Team'
             },
+                
         ];
 
         this.state={
-            data:sourceData,
+            currentData:sourceData,
             // currentData:[],
             isLoaded:false,
             // ava:'../../img/avatar/ava.jpg',
@@ -106,15 +92,12 @@ class CommunityShow extends Component {
     //       })
     //     })
     // }
-
-    render() {
-        if(!this.state.isLoaded){
-            return <div>Loading</div>
-        }
-        else{
-        return ( 
-            
-            <div style={{height: '100%',margin:'10px'}}>
+    render() { 
+        return (
+            <div style={{margin:'60px 150px 40px 150px',
+            // background:'#ececec',
+            // border:'2px gray solid'
+            }}>
                 <Layout>
                     <Header theme='light'>
                         <Content>
@@ -127,7 +110,7 @@ class CommunityShow extends Component {
                                 </Col>
                                 <Col span={2} offset={16}>
                                     <Button type="primary" style={{float:'right',top:'15px'}}
-                                    onClick={this.switchComm.bind(this)}
+                                    // onClick={this.switchComm.bind(this)}
                                     >换一换</Button>
                                 </Col>
                                 <Col span={2} offset={2}>
@@ -140,55 +123,34 @@ class CommunityShow extends Component {
                         </Content>
                     </Header>
                     <Content style={{paddingLeft:'30px',paddingRight:'30px'}}>
-                        <List
-                            // bordered={true}
-                            itemLayout="horizontal"
-                            dataSource={this.state.currentData}
-                            renderItem={item => (
-                            <List.Item
-                                key={item.moment.momentId}
-                            >
-                                <List.Item.Meta
-                                //帖子的名字和指向的地址，传一个pid，post_id
-                                title={<a href ={"#/Moment/"+item.moment.momentId} target="_blank" rel="noopener noreferrer">{item.moment.title}</a>}
-                                // description={<p>{item.description}</p>}
-                                description={
-                                    <div>
-                                        <Row>
-                                            <Col span={4} offset={0}>
-                                                {item.nickname}
-                                            </Col>
-                                            <Col span={2} offset={10}>
-                                                <IconText icon={StarOutlined}  text={item.starCount} key="list-vertical-star-o" />
-                                            </Col>
-                                            <Col span={2} offset={1}>
-                                                <IconText icon={LikeOutlined} text={item.likeCount} key="list-vertical-like-o" />
-                                            </Col>
-                                            <Col span={2} offset={1}>
-                                                <IconText icon={MessageOutlined} text={item.commentCount} key="list-vertical-message" />
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                }
-                                avatar={
-                                    <a href={"#/personal/account="+item.moment.account} target="_blank" rel="noopener noreferrer">
-                                    {/* <a href={"#/personal/account="+JSON.parse(localStorage.userData).account}> */}
-                                      <Avatar 
-                                        src={require("../../img/avatar/ava.jpg")}
-                                      ></Avatar>
-                                    </a>
-                                  }
-
-                                />
-                            </List.Item>
-                            )}
-                        />
+                        <div style={{padding:'20px'
+                            // background:'#ececec',
+                            // border:'2px gray solid'
+                            }}>
+                        <Row gutter={16}>
+                        {this.state.currentData.map(function(item){
+                                return(
+                                    <Col span={8} key={item}
+                                    style={{top:'20px'}}
+                                    >
+                                        <Card 
+                                        title={<a href ={"#/Moment/"+item.moment.momentId} target="_blank" rel="noopener noreferrer">
+                                            {item.title}
+                                        </a>}
+                                         bordered={false}>
+                                             {item.content}
+                                        </Card>
+                                    </Col>
+                                )
+                            })
+                            }
+                        </Row>
+                        </div>
                     </Content>
                 </Layout>
             </div>
-         );
-      }
+          );
     }
 }
  
-export default CommunityShow;
+export default TopBar;

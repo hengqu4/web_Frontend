@@ -91,7 +91,7 @@ class ActivityShow extends Component {
                                                     // textAlign: 'center',
                                                     // left:'10px',
                                             }}>
-                                                {limitTxt(slide.title,20)}
+                                                {/* {limitTxt(slide.title,20)} */}
                                             </div>
                                         {/* </a> */}
                                         {/* <div style={{color: '#fff',height:'40px',}}></div>  */}
